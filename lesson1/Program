@@ -1,0 +1,4 @@
+int a = 62;
+int b = 12;
+int c = a - b;
+Console.Writeline ('Результат вычисления:',c);
