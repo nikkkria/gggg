@@ -14,27 +14,27 @@
         questions[8] = "Вид птиц семейства бекасовых, гнездящийся в умеренном и субарктическом поясах Евразии:";
         questions[9] = "Что может рассмешить Диму?";
         string[][] answers = new string[10][];
-        answers[0] = new[] { "1. 31.08.2007", "2. 11.08.2008", "3. 11.09.2001", "4. 11.08.2007" };
-        answers[1] = new[] { "1. Ёж", "2. Петух", "3. Фенек", "4. Кот" };
-        answers[2] = new[] { "1. Фанаты Баяндиной", "2. Атнють не гипербола", "3. Казахские прошмандовки", "4. Светлый путь" };
-        answers[3] = new[] { "1. Чтоб их камазом переехало", "2. Ну и пошло оно всё", "3. Пиздец", "4. Как все достало" };
-        answers[4] = new[] { "1. Мой хороший друг Жданович Андрей", "2. Гояев Кирилл", "3. Командир взвода", "4. Витя Попов" };
-        answers[5] = new[] { "1. Ника", "2. Злата", "3. Дима", "4. Кирилл" };
-        answers[6] = new[] { "1. Нога", "2. Лицо", "3. Рука", "4. Живот" };
-        answers[7] = new[] { "1. Икра", "2. Чай", "3. Сухофрукты", "4. Кофе" };
-        answers[8] = new[] { "1. Колибри", "2. Хохлатый питохуй", "3. Вальдшнеп", "4. Додо" };
-        answers[9] = new[] { "1. Троллейбус", "2. Всё что угодно", "3. Оксид кремния", "4. Гояев Кирилл" };
-        int[] correctAnswers = new int[10];
-        correctAnswers[0] = 4;
-        correctAnswers[1] = 2;
-        correctAnswers[2] = 3;
-        correctAnswers[3] = 1;
-        correctAnswers[4] = 4;
-        correctAnswers[5] = 3;
-        correctAnswers[6] = 1;
-        correctAnswers[7] = 2;
-        correctAnswers[8] = 3;
-        correctAnswers[9] = 2;
+        answers[0] = new[] { "A: 31.08.2007", "B: 11.08.2008", "C: 11.09.2001", "D: 11.08.2007" };
+        answers[1] = new[] { "A: Ёж", "B: Петух", "C: Фенек", "D: Кот" };
+        answers[2] = new[] { "A: Фанаты Баяндиной", "B: Атнють не гипербола", "C: Казахские прошмандовки", "D: Светлый путь" };
+        answers[3] = new[] { "A: Чтоб их камазом переехало", "B: Ну и пошло оно всё", "C: Пиздец", "D: Как все достало" };
+        answers[4] = new[] { "A: Мой хороший друг Жданович Андрей", "B: Гояев Кирилл", "C: Командир взвода", "D: Витя Попов" };
+        answers[5] = new[] { "A: Ника", "B: Злата", "C: Дима", "D: Кирилл" };
+        answers[6] = new[] { "A: Нога", "B: Лицо", "C: Рука", "D: Живот" };
+        answers[7] = new[] { "A: Икра", "B: Чай", "C: Сухофрукты", "D: Кофе" };
+        answers[8] = new[] { "A: Колибри", "B: Хохлатый питохуй", "C: Вальдшнеп", "D: Додо" };
+        answers[9] = new[] { "A: Троллейбус", "B: Всё что угодно", "C: Оксид кремния", "D: Гояев Кирилл" };
+        string[] correctAnswers = new string[10];
+        correctAnswers[0] = "D";
+        correctAnswers[1] = "B";
+        correctAnswers[2] = "C";
+        correctAnswers[3] = "A";
+        correctAnswers[4] = "D";
+        correctAnswers[5] = "C";
+        correctAnswers[6] = "A";
+        correctAnswers[7] = "B";
+        correctAnswers[8] = "C";
+        correctAnswers[9] = "B";
         Console.WriteLine("Приветствую вас! Вы попали в игру «Как стать миллионером»! И сегодня у вас действительно есть шанс им стать! Но, для начала, представьтесь.");
         string? name = Console.ReadLine();
         Console.WriteLine($"Что ж, {name}, здравствуйте." +
@@ -48,38 +48,20 @@
                 Console.WriteLine(answers[i][g]);
             }
             Console.WriteLine();
-            int answer_ch = ParseIntegerFromKeyboard("Введите номер ответа: ");
-
-            if (answer_ch != correctAnswers[i])
+            string? ans = Console.ReadLine();
+            Console.WriteLine();
+            bool result = true;
+            if (result != correctAnswers[i].Contains(ans))
             {
                 Console.WriteLine("Извини, но это неправильный ответ. Вы проиграли! Увидимся в другой раз.");
                 return;
-
             }
             else if (i < 9)
             {
                 Console.WriteLine("Молодец, продолжаем игру! \n");
+                
             }
-
-
         }
         Console.WriteLine("Поздравляю вас, вы прошли игру! Можете приехать по адресу г. Минск, ул. Купревича 3в и забрать свой приз! А у нас на этом всё, до свидания!");
     }
-    static int ParseIntegerFromKeyboard(string check)
-    {
-        int answer;
-        bool answer_ok = false;
-        do
-        {
-            Console.Write(check);
-            string? answer_st = Console.ReadLine();
-            Console.WriteLine();
-            answer_ok = int.TryParse((answer_st), out answer);
-            if (!answer_ok)
-            {
-                Console.WriteLine("Прошу, не балуйся и введи нормальный ответ. \n");
-            }
-        } while (!answer_ok);
-        return answer;
     }
-}
