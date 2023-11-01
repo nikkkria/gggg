@@ -2,7 +2,6 @@
 {
     private static void Main(string[] args)
     {
-        int answer = 0;
         string[] questions = new string[10];
         questions[0] = "Когда родился Гояев Кирилл?";
         questions[1] = "Кто из данных животных Дима?";
@@ -49,20 +48,9 @@
                 Console.WriteLine(answers[i][g]);
             }
             Console.WriteLine();
-            bool answer_ok = false;
-            do
-            {
-                Console.Write("Введите номер ответа: ");
-                string answer_st = Console.ReadLine();
-                Console.WriteLine();
-                answer_ok = int.TryParse((answer_st), out answer);
-                if (!answer_ok)
-                {
-                    Console.WriteLine("Прошу, не балуйся и введи нормальный ответ. \n");
-                }
-            } while (!answer_ok);
+            int answer_ch = ParseIntegerFromKeyboard("Введите номер ответа: ");
 
-            if (answer != correctAnswers[i])
+            if (answer_ch != correctAnswers[i])
             {
                 Console.WriteLine("Извини, но это неправильный ответ. Вы проиграли! Увидимся в другой раз.");
                 return;
@@ -76,6 +64,24 @@
 
         }
         Console.WriteLine("Поздравляю вас, вы прошли игру! Можете приехать по адресу г. Минск, ул. Купревича 3в и забрать свой приз! А у нас на этом всё, до свидания!");
+    }
+    static int ParseIntegerFromKeyboard(string df)
+    {
+        int answer;
+        bool answer_ok = false;
+        do
+        {
+            Console.Write(df);
+            string? answer_st = Console.ReadLine();
+            Console.WriteLine();
+            answer_ok = int.TryParse((answer_st), out answer);
+            if (!answer_ok)
+            {
+                Console.WriteLine("Прошу, не балуйся и введи нормальный ответ. \n");
+            }
+        } while (!answer_ok);
+        return answer;
+
     }
 }
   
