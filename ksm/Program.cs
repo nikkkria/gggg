@@ -65,13 +65,13 @@
         }
         Console.WriteLine("Поздравляю вас, вы прошли игру! Можете приехать по адресу г. Минск, ул. Купревича 3в и забрать свой приз! А у нас на этом всё, до свидания!");
     }
-    static int ParseIntegerFromKeyboard(string df)
+    static int ParseIntegerFromKeyboard(string check)
     {
         int answer;
         bool answer_ok = false;
         do
         {
-            Console.Write(df);
+            Console.Write(check);
             string? answer_st = Console.ReadLine();
             Console.WriteLine();
             answer_ok = int.TryParse((answer_st), out answer);
@@ -81,7 +81,6 @@
             }
         } while (!answer_ok);
         return answer;
-
     }
 }
   
